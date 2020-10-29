@@ -19,6 +19,7 @@ from my_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('sessions/',include('my_sessions.urls'))
     path('set/',views.SetCookie,name="set"),
     path('get/',views.GetCookie,name="get"),
     path('del/',views.DelCookie,name='delete')
