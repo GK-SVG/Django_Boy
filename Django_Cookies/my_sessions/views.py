@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse
 
 
 def set_session(request):
@@ -8,11 +8,17 @@ def set_session(request):
 
 
 def get_session(request):
-    name = request.session.get('name','Guest')
-    keys = request.session.keys()
-    items = request.session.items()
-    return render(request,'getsessions.html',{'name':name,'keys':keys,'items':items})
+    if 'name' in request.session:
+        name = request.session.get('name','Guest')
+        keys = request.session.keys()
+        items = request.session.items()
+        request.session.modified = True
+        return render(request,'getsessions.html',{'name':name,'keys':keys,'items':items})
+    else:
+        return HttpResponse('Session Expired.......')
 
+
+    
 
 def del_session(request):
     #deleting session data from DB
