@@ -5,22 +5,22 @@ from .models import StudentData
 def SetCookie(request):
     students = StudentData.objects.all()
     response = render(request,'setCookies.html',{'students':students})
-    temp_stu = []
-    for student in students:
-        temp_stu.append(student.name)
-    response.set_cookie('students',temp_stu,expires=datetime.utcnow()+timedelta(days=4))
+    # temp_stu = []
+    # for student in students:
+    #     temp_stu.append(student.name)
+    response.set_cookie('students',students,expires=datetime.utcnow()+timedelta(days=4))
     return response
 
 
 def GetCookie(request):
     #name = request.COOKIES['name']
     name = request.COOKIES.get('students','Guest')
-    name=name.replace('[','')
-    name=name.replace(']','')
-    name=name.replace("'",'')
-    name=name.replace(",",'')
+    # name=name.replace('[','')
+    # name=name.replace(']','')
+    # name=name.replace("'",'')
+    # name=name.replace(",",'')
     
-    print(name)
+    # print(name)
     return render(request,'getCookies.html',{'name':name})
     
 
