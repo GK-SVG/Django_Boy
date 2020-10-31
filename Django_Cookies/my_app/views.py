@@ -1,15 +1,26 @@
 from django.shortcuts import render
 from datetime import datetime, timedelta
+from .models import StudentData
 # Create your views here.
 def SetCookie(request):
-    response = render(request,'setCookies.html')
-    response.set_cookie('name','gautam',expires=datetime.utcnow()+timedelta(days=4))
+    students = StudentData.objects.all()
+    response = render(request,'setCookies.html',{'students':students})
+    temp_stu = []
+    for student in students:
+        temp_stu.append(student.name)
+    response.set_cookie('students',temp_stu,expires=datetime.utcnow()+timedelta(days=4))
     return response
 
 
 def GetCookie(request):
     #name = request.COOKIES['name']
-    name = request.COOKIES.get('name','Guest')
+    name = request.COOKIES.get('students','Guest')
+    name=name.replace('[','')
+    name=name.replace(']','')
+    name=name.replace("'",'')
+    name=name.replace(",",'')
+    
+    print(name)
     return render(request,'getCookies.html',{'name':name})
     
 

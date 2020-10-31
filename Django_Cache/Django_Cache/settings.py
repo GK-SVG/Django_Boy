@@ -122,7 +122,7 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
-CACHE_MIDDLEWARE_SECONDS = 30
+CACHE_MIDDLEWARE_SECONDS = 300
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',

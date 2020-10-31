@@ -1,5 +1,6 @@
 from django.shortcuts import render
-
+from .models import StudentData
 # Create your views here.
 def mycache(request):
-    return render(request,'cache.html')
+    students = StudentData.objects.all()
+    return render(request,'cache.html',{'students':students})

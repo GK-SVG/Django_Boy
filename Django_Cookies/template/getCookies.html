@@ -6,6 +6,9 @@
     <title>GetCookies</title>
 </head>
 <body>
-    <h2>GET cookies Name {{name}}</h2>
+{{name}}
+  {% for nm in  name%}
+    {{nm}}<br>
+  {% endfor %}
 </body>
 </html>
