@@ -64,3 +64,18 @@ def at_ending_save(sender, instance, created, **kwargs):
         print("created--",created)
         print(f"Kwargs--{kwargs}")
 
+@receiver(pre_delete, sender=User)
+def at_beginning_delete(sender, instance, **kwargs):
+    print("----------------")
+    print("Pre Delete Signal")
+    print("Sender--",sender)
+    print("Instance--",instance)
+    print(f"Kwargs--{kwargs}")
+    
+@receiver(post_delete, sender=User)
+def at_ending_delete(sender, instance, **kwargs):
+    print("----------------")
+    print("Post Delete Signal")
+    print("Sender--",sender)
+    print("Instance--",instance)
+    print(f"Kwargs--{kwargs}")
