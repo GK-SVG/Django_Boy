@@ -34,6 +34,14 @@ class Post(models.Model):
     title = models.CharField(max_length=150)
     date = models.DateField(auto_now=True)
 
+#--------------Many to Many Realationship--------------------------
+class Song(models.Model):
+    singers = models.ManyToManyField(User)
+    song_name = models.CharField(max_length=100)
+    song_dur  = models.IntegerField()
+
+    def all_singer(self):
+        return " ,".join([str(p) for p in self.singers.all()])
 
 
 
