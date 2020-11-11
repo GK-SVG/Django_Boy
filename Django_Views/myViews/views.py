@@ -1,7 +1,7 @@
 from django.shortcuts import render,HttpResponse
 from .forms import Contact
 from django.views import View
-from django.views.generic.base import TemplateView
+from django.views.generic.base import TemplateView,RedirectView
 # Create your views here.
 #-----------------Functional View----------------------
 def func(request):
@@ -51,7 +51,7 @@ class MyclassView(View):
 
 
 
-#---------Django Template Class Based view
+#---------Django Template Class Based view-------------------
 class IndexTemplateView(TemplateView):
     template_name = 'class1.html'
 
@@ -63,3 +63,9 @@ class Index2Template(TemplateView):
         context["name"] = "Gautam" 
         return context
     
+
+#----------------Django Redirect Class Based Views----------
+class SiteRedirectView(RedirectView):
+    url = "https://github.com/GK-SVG"
+
+                                                                                                                                                  
