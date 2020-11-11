@@ -1,6 +1,7 @@
 from django.shortcuts import render,HttpResponse
 from .forms import Contact
 from django.views import View
+from django.views.generic.base import TemplateView
 # Create your views here.
 #-----------------Functional View----------------------
 def func(request):
@@ -50,3 +51,15 @@ class MyclassView(View):
 
 
 
+#---------Django Template Class Based view
+class IndexTemplateView(TemplateView):
+    template_name = 'class1.html'
+
+
+class Index2Template(TemplateView):
+    template_name = "class1.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["name"] = "Gautam" 
+        return context
+    
