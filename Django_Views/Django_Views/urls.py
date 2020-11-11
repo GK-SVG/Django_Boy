@@ -15,10 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from myViews.views import func,ClassView
+from myViews.views import func,ClassView,contact,ClassContact,fun,MyclassView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('func/',func,name="func"),
     path('cls/',ClassView.as_view(),name="cls"),
+    path('confunc/',contact),
+    path('clscont/',ClassContact.as_view()),
+    path('fun1/',fun,{'template_name':"class1.html"},name="fun1"),
+    path('fun2/',fun,{'template_name':"class2.html"},name="fun2"),
+    path('cls1/',MyclassView.as_view(template_name="class1.html")),
+    path('cls2/',MyclassView.as_view(template_name="class2.html"))
 ]
