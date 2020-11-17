@@ -87,6 +87,12 @@ class EmpView(ListView):
         context["eq_50"] = Employee.objects.filter(salary=50000)
         context["lt_50"] = Employee.objects.exclude(salary__gt=45000)
         return context
+    def get_template_names(self):
+        if self.request.user.is_superuser:
+            template_name = "myViews/employee_list.html"
+        else:
+            template_name = "myViews/staff.html"
+        return template_name
     
     
 
