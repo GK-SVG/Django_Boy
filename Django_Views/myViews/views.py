@@ -2,7 +2,11 @@ from django.shortcuts import render,HttpResponse
 from .forms import Contact
 from django.views import View
 from django.views.generic.base import TemplateView,RedirectView
+from django.views.generic.list import ListView
+from .models import Employee
 # Create your views here.
+
+
 #-----------------Functional View----------------------
 def func(request):
     return HttpResponse('This is function based view')
@@ -67,5 +71,10 @@ class Index2Template(TemplateView):
 #----------------Django Redirect Class Based Views----------
 class SiteRedirectView(RedirectView):
     url = "https://github.com/GK-SVG"
+    
+
+#-----------------Django Generic List View--------------------
+class EmpView(ListView):
+    model = Employee
 
                                                                                                                                                   

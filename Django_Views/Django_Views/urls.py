@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from myViews.views import func,ClassView,contact,ClassContact,fun,MyclassView,IndexTemplateView,SiteRedirectView
+from myViews.views import (func,ClassView,contact,ClassContact,EmpView,
+                            fun,MyclassView,IndexTemplateView,
+                            SiteRedirectView)
 from django.views.generic.base import TemplateView,RedirectView
 
 urlpatterns = [
@@ -31,6 +33,7 @@ urlpatterns = [
     path('index/',IndexTemplateView.as_view(extra_context={'roll':101}),name="index"),
     path('home/',RedirectView.as_view(url="/index/")),
     path('home2/',SiteRedirectView.as_view(),name="home2"),
-    path('home3/',SiteRedirectView.as_view(pattern_name='home2'))
+    path('home3/',SiteRedirectView.as_view(pattern_name='home2')),
+    path('',EmpView.as_view())
 
 ]
