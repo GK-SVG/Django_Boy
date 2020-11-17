@@ -75,6 +75,19 @@ class SiteRedirectView(RedirectView):
 
 #-----------------Django Generic List View--------------------
 class EmpView(ListView):
-    model = Employee
+    #model = Employee
+    ordering = ['name']
+    context_object_name = 'employee'
+
+    def get_queryset(self):
+        return Employee.objects.exclude(salary__gt=45000)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["eq_50"] = Employee.objects.filter(salary=50000)
+        context["lt_50"] = Employee.objects.exclude(salary__gt=45000)
+        return context
+    
+    
 
                                                                                                                                                   

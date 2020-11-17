@@ -6,10 +6,20 @@
     <title>Document</title>
 </head>
 <body>
-    {% for emp in employee_list %}
+     <h3>get_queryset</h3>
+    {% for emp in employee %}
     {{emp.name}}
     {{emp.age}}
     {{emp.salary}}<br>
+    {% endfor %}
+    <h3>get_context_data</h3>
+    <h4>Eq 50</h4>
+    {% for eq in eq_50  %}
+    {{eq.name}} {{eq.salary}}<br>
+    {% endfor %}
+    <h4>Lt 50</h4>
+    {% for eq in lt_50  %}
+    {{eq.name}} {{eq.salary}}<br>
     {% endfor %}
 </body>
 </html>
