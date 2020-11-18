@@ -3,6 +3,7 @@ from .forms import Contact
 from django.views import View
 from django.views.generic.base import TemplateView,RedirectView
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from .models import Employee
 # Create your views here.
 
@@ -94,6 +95,9 @@ class EmpView(ListView):
             template_name = "myViews/staff.html"
         return template_name
     
-    
+
+#-------------------------Generic DetailView--------------------------
+class EmpDetailView(DetailView):
+    model = Employee
 
                                                                                                                                                   

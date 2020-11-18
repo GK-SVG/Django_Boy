@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from myViews.views import (func,ClassView,contact,ClassContact,EmpView,
                             fun,MyclassView,IndexTemplateView,
-                            SiteRedirectView)
+                            SiteRedirectView,EmpDetailView)
 from django.views.generic.base import TemplateView,RedirectView
 
 urlpatterns = [
@@ -34,6 +34,7 @@ urlpatterns = [
     path('home/',RedirectView.as_view(url="/index/")),
     path('home2/',SiteRedirectView.as_view(),name="home2"),
     path('home3/',SiteRedirectView.as_view(pattern_name='home2')),
-    path('',EmpView.as_view())
+    path('',EmpView.as_view()),
+    path('emp/<int:pk>',EmpDetailView.as_view())
 
 ]
