@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/intlTelInput.css'%}">
+  <title>Document</title>
+</head>
+
+<body>
+  <form id="form">
+    {% csrf_token %}
+    <p>Enter Telephone Number: <input type="tel" name="phone" id="phone">
+      <button type="submit">Submit</button>
+  </form>
+  <script src="{% static 'js/intlTelInput.min.js'%}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    var input = document.querySelector("#phone")
+  
+    // Initialise plugin
+    var intl = window.intlTelInput(input, {
+      preferredCountries: ["us", "gb"],
+      separateDialCode: true,
+      
+    });
+    $("#form").submit(function (e) {
+        // preventing from page reload and default actions
+        e.preventDefault();
+        var phn= jQuery('input[name="phone"]').val();
+        // serialize the data for sending the form data.
+        var country_code = $("div.iti__selected-dial-code").text()
+        var serializedData = country_code.concat(phn)
+        console.log('mydata===',serializedData)
+        // make POST ajax call
+        $.ajax({
+            type: 'POST',
+            url: "",
+            data: {
+                      phone:serializedData,
+                      csrfmiddlewaretoken: '{{ csrf_token }}'
+                  },
+            success: function (response) {
+                // on successfull creating object
+                // 1. clear the form.
+                $("#form").trigger('reset');
+                // display the newly friend to table.
+                console.log(response)
+            },
+        })
+    })
+    
+  </script>
+</body>
+
+</html>
