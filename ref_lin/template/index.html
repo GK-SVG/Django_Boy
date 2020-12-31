@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-
+{% if profile %}
+<a class="btn btn-primary" href="{% url 'signup1' profile.code %}">Create New Account</a>
+{% else %}
+<a class="btn btn-primary" href="{% url 'signup2' %}">Create New Account</a>
+{% endif %}
 {% endblock content %}
