@@ -20,5 +20,6 @@ from myapi import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('stuinfo/<int:pk>/',views.students_details),
-    path('stuinfo/',views.students)
+    path('stuinfo/',views.students),
+    path('stuCreate/',views.create_Stu)
 ]
