@@ -51,3 +51,15 @@ def employee_api(request):
                 return HttpResponse(json_data,content_type="application/json")
         json_data = JSONRenderer().render(serializer.errors)
         return HttpResponse(json_data,content_type="application/json")
+    if request.method == 'DELETE':
+        json_data = request.body
+        stream = io.BytesIO(json_data)
+        python_data = JSONParser().parse(stream)
+        id = python_data.get('id',None)
+        if id is not None:
+            emp = Employee.objects.get(id=id)
+            emp.delete()
+            resp = {'Success':'Data Deleted Successfully'}
+            # json_data = JSONRenderer().render(resp)
+            # return HttpResponse(json_data,content_type="application/json")
+            return JsonResponse(resp,safe=False)

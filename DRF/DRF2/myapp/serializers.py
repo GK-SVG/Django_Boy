@@ -13,10 +13,10 @@ class EmployeeSerializer(serializers.Serializer):
     
 
     def update(self,instance,validate_data):
-        print(instance)
+        print(instance.name)
         instance.name = validate_data.get('name',instance.name)
         instance.salery = validate_data.get('salery',instance.salery)
         instance.city = validate_data.get('city',instance.city)
-        print(instance)
+        print(instance.name)
         instance.save()
         return instance

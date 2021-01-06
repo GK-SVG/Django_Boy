@@ -31,9 +31,9 @@ def post_Data():
 
 def update_data():
     data = {
-        'id':5,
-        'name':'Gaurav Saini',
-        'salery':20000,
+        'id':4,
+        'name':'Uttam Kumar(Lucifer)',
+        'salery':25000,
     }
     json_data = json.dumps(data)
     req = requests.put(url=URL,data=json_data)
@@ -41,3 +41,15 @@ def update_data():
     print(respnce)
 
 update_data()
+
+
+def delete_data(id=None):
+    data = {}
+    if id is not None:
+        data = {'id':id}
+    json_data = json.dumps(data)
+    req = requests.delete(url=URL,data=json_data)
+    respnce = req.json()
+    print(respnce)
+
+# delete_data()
