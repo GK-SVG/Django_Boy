@@ -6,4 +6,5 @@ from myapp.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('employeeData/',employee_api),
+    path('ClassemployeeData/',EmployeeAPI.as_view())
 ]
