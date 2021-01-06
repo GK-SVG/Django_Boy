@@ -26,4 +26,18 @@ def post_Data():
     respnce = req.json()
     print(respnce)
 
-post_Data()
+# post_Data()
+
+
+def update_data():
+    data = {
+        'id':5,
+        'name':'Gaurav Saini',
+        'salery':20000,
+    }
+    json_data = json.dumps(data)
+    req = requests.put(url=URL,data=json_data)
+    respnce = req.json()
+    print(respnce)
+
+update_data()

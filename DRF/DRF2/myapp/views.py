@@ -36,4 +36,18 @@ def employee_api(request):
             return HttpResponse(json_data,content_type="application/json")
         json_data = JSONRenderer().render(serializer.errors)
         return HttpResponse(json_data,content_type="application/json")
-        
+    if request.method=="PUT":
+        json_data = request.body
+        stream = io.BytesIO(json_data)
+        python_data = JSONParser().parse(stream)
+        id = python_data.get('id',None)
+        if id is not None:
+            emp = Employee.objects.get(id=id)
+            serializer = EmployeeSerializer(emp,data=python_data,partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                resp = {'Success':'Data Updated Successfully'}
+                json_data = JSONRenderer().render(resp)
+                return HttpResponse(json_data,content_type="application/json")
+        json_data = JSONRenderer().render(serializer.errors)
+        return HttpResponse(json_data,content_type="application/json")
