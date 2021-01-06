@@ -12,5 +12,18 @@ def get_data(id=None):
     respnce = req.json()
     print(respnce)
     
+# get_data()
 
-get_data()
+
+def post_Data():
+    data = {
+        'name':'Gaurav',
+        'salery':15000,
+        'city':'Alwar'
+    }
+    json_data = json.dumps(data)
+    req = requests.post(url=URL,data=json_data)
+    respnce = req.json()
+    print(respnce)
+
+post_Data()
