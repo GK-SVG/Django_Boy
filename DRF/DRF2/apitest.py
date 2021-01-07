@@ -2,8 +2,8 @@ import requests
 import json
 
 # URL = "http://127.0.0.1:8000/employeeData/"
-URL = "http://127.0.0.1:8000/ClassemployeeData/"
-
+# URL = "http://127.0.0.1:8000/ClassemployeeData/"
+URL = "http://127.0.0.1:8000/StudentAPI/"
 
 
 def get_data(id=None):
@@ -15,13 +15,13 @@ def get_data(id=None):
     respnce = req.json()
     print(respnce)
     
-# get_data()
+# get_data(1)
 
 
 def post_Data():
     data = {
-        'name':'Akshay Vyas',
-        'salery':10000,
+        'name':'Amit Singh',
+        'roll':3,
         'city':'Alwar'
     }
     json_data = json.dumps(data)
@@ -29,14 +29,14 @@ def post_Data():
     respnce = req.json()
     print(respnce)
 
-post_Data()
+# post_Data()
 
 
 def update_data():
     data = {
-        'id':4,
-        'name':'Uttam Kumar',
-        'salery':25000,
+        'id':3,
+        'name':'Amit Kumar',
+        # 'salery':25000,
     }
     json_data = json.dumps(data)
     req = requests.put(url=URL,data=json_data)
@@ -55,4 +55,4 @@ def delete_data(id=None):
     respnce = req.json()
     print(respnce)
 
-# delete_data()
+delete_data(1)
