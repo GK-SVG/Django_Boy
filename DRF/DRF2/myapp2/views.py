@@ -59,8 +59,8 @@ class StudentAPI(View):
         python_data = JSONParser().parse(stream)
         id = python_data.get('id',None)
         if id is not None:
-            emp = Student.objects.get(id=id)
-            emp.delete()
+            stu = Student.objects.get(id=id)
+            stu.delete()
             resp = {'Success':'Data Deleted Successfully'}
             # json_data = JSONRenderer().render(resp)
             # return HttpResponse(json_data,content_type="application/json")

@@ -29,7 +29,7 @@ def post_Data():
     respnce = req.json()
     print(respnce)
 
-# post_Data()
+post_Data()
 
 
 def update_data():
@@ -55,4 +55,4 @@ def delete_data(id=None):
     respnce = req.json()
     print(respnce)
 
-delete_data(1)
+# delete_data(1)
