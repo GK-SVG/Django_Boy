@@ -16,7 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from myapp.views import products_api
-from myapp2.views import ProductAPI
+from myapp2.views import (ProductAPI,DeleteProductAPI,
+                         RetrieveProductAPI,ListProductAPI,
+                         CreateProductAPI,UpdateProductAPI,
+                         GetPostProductAPI,RetrievePutDeleteProductAPI)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +28,11 @@ urlpatterns = [
     path('productsApi/<int:id>',products_api),
     path('ClassBasedProductsApi/',ProductAPI.as_view()),
     path('ClassBasedProductsApi/<int:id>',ProductAPI.as_view()),
+    path('ListProductAPI/',ListProductAPI.as_view()),
+    # path('ListProductAPI/<int:pk>',RetrieveProductAPI.as_view()),
+    # path('ListProductAPI/<int:pk>',UpdateProductAPI.as_view()),
+    path('ListProductAPI/<int:pk>',DeleteProductAPI.as_view()),
+    path('CreateProductAPI/',CreateProductAPI.as_view()),
+    path('GetPostProductAPI/',GetPostProductAPI.as_view()),
+    path('RetrievePutDeleteProductAPI/<int:pk>',RetrievePutDeleteProductAPI.as_view())
 ]

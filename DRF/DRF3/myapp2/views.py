@@ -4,8 +4,12 @@ from myapp.models import Product
 from myapp.serializers import ProductSerializer
 from rest_framework import status
 from rest_framework.views import APIView
+from rest_framework.generics import GenericAPIView
+from rest_framework.mixins import DestroyModelMixin,UpdateModelMixin,RetrieveModelMixin,ListModelMixin,CreateModelMixin
 # Create your views here.
 
+
+#----------ClassBased APIView------------------------------------------
 class ProductAPI(APIView):
     def get(self, request,id=None,format=None):
         if id is not None:
@@ -42,3 +46,63 @@ class ProductAPI(APIView):
             return Response({'error':"Something went wrong"},status=status.HTTP_400_BAD_REQUEST)
         prod.delete()
         return Response({'msg':'data Deleted'})
+
+
+
+#---------------Generic APIview with Mixins-------------
+class ListProductAPI(GenericAPIView,ListModelMixin):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    def get(self,request,*args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+
+
+class CreateProductAPI(GenericAPIView,CreateModelMixin):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    def post(self,request,*args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+
+class RetrieveProductAPI(GenericAPIView,RetrieveModelMixin):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    def get(self,request,*args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+
+class UpdateProductAPI(GenericAPIView,UpdateModelMixin):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    def put(self,request,*args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+
+class DeleteProductAPI(GenericAPIView,DestroyModelMixin):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    def delete(self,request,*args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
+
+
+
+
+#--------------Advanced Generic API view------------------------------------------
+class GetPostProductAPI(GenericAPIView,ListModelMixin,CreateModelMixin):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    def get(self,request,*args, **kwargs):
+        return self.list(request, *args, **kwargs)
+    def post(self,request,*args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+
+class RetrievePutDeleteProductAPI(GenericAPIView,RetrieveModelMixin,UpdateModelMixin,DestroyModelMixin):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    def get(self,request,*args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+    def put(self,request,*args, **kwargs):
+        return self.update(request, *args, **kwargs)
+    def delete(self,request,*args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
