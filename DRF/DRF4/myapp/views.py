@@ -6,6 +6,7 @@ from .models import Country
 # Create your views here.
 
 
+#---------------------Viewset API-----------------------------------
 class CountryViewset(viewsets.ViewSet):
     def get(self,request):
         country = Country.objects.all()
@@ -34,6 +35,13 @@ class CountryViewset(viewsets.ViewSet):
         return Response({'msg':'Data Deleted Successfully'})
 
 
+#------------------------------ModelViewset API-----------------
 class CountryModelViewset(viewsets.ModelViewSet):
+    queryset = Country.objects.all()
+    serializer_class = CountrySerializer
+
+
+#----------------------------ResdOnly ModelViewset API-------------
+class CountryReadOnlyModelViewset(viewsets.ReadOnlyModelViewSet):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
