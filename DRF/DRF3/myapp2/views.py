@@ -4,7 +4,7 @@ from myapp.models import Product
 from myapp.serializers import ProductSerializer
 from rest_framework import status
 from rest_framework.views import APIView
-from rest_framework.generics import GenericAPIView
+from rest_framework.generics import GenericAPIView,ListCreateAPIView,RetrieveUpdateDestroyAPIView
 from rest_framework.mixins import DestroyModelMixin,UpdateModelMixin,RetrieveModelMixin,ListModelMixin,CreateModelMixin
 # Create your views here.
 
@@ -106,3 +106,16 @@ class RetrievePutDeleteProductAPI(GenericAPIView,RetrieveModelMixin,UpdateModelM
         return self.update(request, *args, **kwargs)
     def delete(self,request,*args, **kwargs):
         return self.destroy(request, *args, **kwargs)
+
+
+
+
+#----------Concreate Generic Api View--------------------------------------
+class ProductListCreate(ListCreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+
+class ProductRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
