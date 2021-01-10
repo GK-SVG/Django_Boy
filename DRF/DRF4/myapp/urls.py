@@ -4,7 +4,8 @@ from myapp.views import *
 
 router = DefaultRouter()
 
-router.register('countryAPI',CountryViewset,basename='CountryAPI')
+# router.register('countryAPI',CountryViewset,basename='CountryAPI')
+router.register('countryAPI',CountryModelViewset,basename='CountryAPI')
 
 urlpatterns = [
     path('',include(router.urls))

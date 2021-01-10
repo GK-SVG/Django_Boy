@@ -32,3 +32,8 @@ class CountryViewset(viewsets.ViewSet):
         country = Country.objects.get(id=pk)
         country.delete()
         return Response({'msg':'Data Deleted Successfully'})
+
+
+class CountryModelViewset(viewsets.ModelViewSet):
+    queryset = Country.objects.all()
+    serializer_class = CountrySerializer
