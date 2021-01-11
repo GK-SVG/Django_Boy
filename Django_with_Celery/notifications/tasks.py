@@ -5,3 +5,7 @@ import time
 def addition(a,b):
     time.sleep(10)
     return a+b
+
+@shared_task
+def send_msg():
+    print('sample msg send to email')
