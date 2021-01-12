@@ -1,7 +1,7 @@
 from django.urls import path,include
 from rest_framework.routers import DefaultRouter
 from myapp.views import *
-from .tokens import CustumTokenGenerater
+# from .tokens import CustumTokenGenerater
 
 router = DefaultRouter()
 
@@ -13,5 +13,5 @@ router.register('countryReadOnlyAPI',CountryReadOnlyModelViewset,basename='count
 urlpatterns = [
     path('',include(router.urls)),
     path('auth/',include('rest_framework.urls')),
-    path('gettoken/',CustumTokenGenerater.as_view())
+    # path('gettoken/',CustumTokenGenerater.as_view())
 ]

@@ -12,6 +12,8 @@ from rest_framework.permissions import IsAuthenticated
 class CountryModelViewset(viewsets.ModelViewSet):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
     
     
 #----------------------------ResdOnly ModelViewset API-------------
