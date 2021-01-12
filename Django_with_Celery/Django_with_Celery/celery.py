@@ -17,7 +17,7 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 app.conf.beat_schedule = {
     'every_15_sec':{
         'task':'notifications.tasks.send_msg',
-        'schedule':10,
+        'schedule':1,
 
     }
 }
