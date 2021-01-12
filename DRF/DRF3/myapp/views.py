@@ -4,6 +4,9 @@ from rest_framework.decorators import api_view
 from .models import Product
 from .serializers import ProductSerializer
 from rest_framework import status
+from rest_framework.decorators import authentication_classes,permission_classes
+from rest_framework.authentication import BaseAuthentication
+from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 
 
@@ -13,6 +16,8 @@ def test_api(request):
 
 
 @api_view(['GET','POST','PUT','PATCH','DELETE'])
+@authentication_classes([BaseAuthentication])
+@permission_classes([IsAuthenticated])
 def products_api(request,id=None):
     if request.method=='GET':
         if id is not None:
