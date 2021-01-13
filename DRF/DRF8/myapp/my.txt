@@ -1,0 +1,13 @@
+http http://127.0.0.1:8000/countryAPI/ 'Authorization:Bearer Your-AccessKey'
+
+http POST http://127.0.0.1:8000/countryAPI/ 'Authorization:Bearer Your-AccessKey'
+
+http PUT http://127.0.0.1:8000/countryAPI/pk 'Authorization:Bearer Your-AccessKey'
+
+http DELETE http://127.0.0.1:8000/countryAPI/pk 'Authorization:Bearer Your-AccessKey'
+
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjEwNTM1NTM0LCJqdGkiOiJjMmM2MmQ0ODE1YWQ0M2ZmOWI5YWM5MGZmOGE1NDEzZSIsInVzZXJfaWQiOjF9.odbVPm9dA64Zk2W3nfZSSpbLYpdkNtykx3Dznm3HDZM
+
+
+
+refresh key--eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYxMDYyMDI2MCwianRpIjoiNGI2MDE1ZWVjZDM1NDk5YmI3NWI5ZWI0MWZmNGUwNzgiLCJ1c2VyX2lkIjoxfQ.cl26RoUuv6CvXrcmWFTlaOoLz62mmY71jMQTgeCnD5E
