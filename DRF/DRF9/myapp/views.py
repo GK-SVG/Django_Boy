@@ -16,7 +16,9 @@ class CountryModelViewset(viewsets.ModelViewSet):
     serializer_class = CountrySerializer
     authentication_classes = [SessionAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
+    # throttle_classes = [AnonRateThrottle,MyRateThrotteler]
     throttle_classes = [AnonRateThrottle,MyRateThrotteler]
+
     
     
 #----------------------------ResdOnly ModelViewset API-------------
