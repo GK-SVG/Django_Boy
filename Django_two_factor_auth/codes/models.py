@@ -7,7 +7,7 @@ class Code(models.Model):
     user = models.OneToOneField(CustumUser,on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.user.username
+        return self.code
     
 
     def save(self, *args,**kwargs):
@@ -15,7 +15,7 @@ class Code(models.Model):
         code_item = ""
         for i in range(5):
             num = random.choice(num_list)
-            code_item +=str(num)
+            code_item+=str(num)
         print('code--',code_item)
         self.code = code_item
         super().save(*args,**kwargs)
