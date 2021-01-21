@@ -37,7 +37,6 @@ def verify(request):
         if form.is_valid():
             num = form.cleaned_data.get('code')
             if str(code)==num:
-                code.save()
                 login(request,user)
                 return redirect('Home')
             else:

@@ -10,5 +10,5 @@ def post_save_generate_code(sender, instance, created,*args, **kwargs):
         Code.objects.create(user=instance)
     else:
         code = Code.objects.get(user=instance) 
-        code.delete()
-        Code.objects.create(user=instance)
+        code.save()
+        

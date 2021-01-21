@@ -16,6 +16,5 @@ class Code(models.Model):
         for i in range(5):
             num = random.choice(num_list)
             code_item+=str(num)
-        print('code--',code_item)
         self.code = code_item
         super().save(*args,**kwargs)

@@ -13,7 +13,7 @@ class Movie(models.Model):
 class Crew(models.Model):
     actor = models.CharField(max_length=50)
     acteress = models.CharField(max_length=50)
-    movie = models.ForeignKey(Movie,on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie,related_name='movie',on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.movie} {self.actor} {self.acteress}'
