@@ -4,7 +4,6 @@ from twilio.rest import Client
 # Create your models here.
 class SMS(models.Model):
     mysms = models.CharField(max_length=200)
-
     def save(self, *args, **kwargs):
         account_sid = 'Your Account SID'
         auth_token = 'Your Auth Token'

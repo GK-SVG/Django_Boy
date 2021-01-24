@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate,login
 from codes.forms import CodeForm
 from users.models import CustumUser
 from codes.models import Code
-
+from .utils import send_code
 
  
 @login_required
@@ -24,7 +24,6 @@ def user_login(request):
             return redirect('Verify')
     return render(request,'login.html',{'form':form})
 
-
 def verify(request):
     form = CodeForm(request.POST or None)
     pk = request.session.get('pk')
@@ -34,6 +33,8 @@ def verify(request):
         print('code',code)
         if not request.POST:
             print('user code',code)
+            send_code(user.phone,code)
+            print("code sended succsfully")
         if form.is_valid():
             num = form.cleaned_data.get('code')
             if str(code)==num:
